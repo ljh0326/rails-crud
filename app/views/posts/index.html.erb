@@ -1,0 +1,13 @@
+<% @posts.each do |post| %>
+  <div>
+    <%= post.id %>
+    <%= post.title %>
+    <%= post.content %>
+    <%= link_to '이 글 보기', "/posts/#{post.id}" %>
+    <%= link_to '이 글 수정', "/posts/#{post.id}/edit" %>
+    <%= link_to '이 글 삭제', "/posts/#{post.id}", method: 'delete', data: {confirm: "정말삭제?"} %>
+  </div>
+<% end %>
+
+<%= link_to  '새 글쓰기', 'posts/new' %>
+<!-- <a href="/posts/new"></a> link_to : 레일즈에서 제공해는 헬퍼--!>
