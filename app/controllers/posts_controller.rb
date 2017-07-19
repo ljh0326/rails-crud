@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
   
   def show
@@ -16,8 +17,11 @@ class PostsController < ApplicationController
     # @post.content = params[:content]
     # @post.save
     
+    #Form_tag 전용
     #create메소드쓰면 위와 같은 역할을 해준다.
-    Post.create(title: params[:title], content: params[:content])
+    #Post.create(title: params[:title], content: params[:content])
+    #Form_for 전용
+    Post.create(title: params[:post][:title], content: params[:post][:content])
     redirect_to '/posts'  
   end
 
@@ -27,7 +31,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update_attributes(title: params[:title], content: params[:content])
+    
+    #Form_tag 전용
+    #@post.update_attributes(title: params[:title], content: params[:content])
+    #Form_for 전용
+    @post.update_attributes(title: params[:post][:title], content: params[:post][:content])
     redirect_to '/posts'
   end
 
